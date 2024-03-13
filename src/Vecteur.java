@@ -2,7 +2,7 @@ public class Vecteur {
     private int[] tableau;
     private int nbElements;
     private static final int RATIO_AGRANDISSEMENT = 2;
-    private static final int TAILLE_INITIALE = 5;
+    private static final int TAILLE_INITIALE = 4;
 
     public Vecteur() {
         tableau = new int[TAILLE_INITIALE];
@@ -20,6 +20,15 @@ public class Vecteur {
         if (nbElements >= tableau.length)
             resize();
         tableau[nbElements++] = valeur;
+    }
+
+    public void ajouter(int valeur, int index) {
+        if (nbElements == tableau.length)
+            resize();
+        for (int i = nbElements; i > index; i--)
+            tableau[i] = tableau[i - 1];
+        tableau[index] = valeur;
+        nbElements++;
     }
 
     private void resize() {

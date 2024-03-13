@@ -13,5 +13,11 @@ public class Main {
         data.ajouter(40);
         data.ajouter(50);
         System.out.println(data);
+
+        System.out.println("Test 3: Ajouter des valeurs à index spécifiques");
+        data.ajouter(-10, 0);
+        data.ajouter(25, 4);
+        data.ajouter(60, 8);
+        System.out.println(data);
     }
 }
