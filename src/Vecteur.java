@@ -17,7 +17,7 @@ public class Vecteur {
     }
 
     public void ajouter(int valeur) {
-        if (nbElements >= tableau.length)
+        if (nbElements == tableau.length)
             resize();
         tableau[nbElements++] = valeur;
     }
@@ -29,6 +29,37 @@ public class Vecteur {
             tableau[i] = tableau[i - 1];
         tableau[index] = valeur;
         nbElements++;
+    }
+
+    public void ajouter(Vecteur autre) {
+        for (int i = 0; i < autre.getNbElements(); i++)
+            this.ajouter(autre.getElementAt(i));
+    }
+
+    public int getNbElements() {
+        return nbElements;
+    }
+
+    public boolean estVide() {
+        return nbElements == 0;
+    }
+
+    public int getElementAt(int index) {
+        return tableau[index];
+    }
+
+    public int trouver(int valeur) {
+        for (int i = 0; i < nbElements; i++)
+            if (tableau[i] == valeur)
+                return i;
+        return -1;
+    }
+
+    public boolean trouveTout(Vecteur autre) {
+        for (int i = 0; i < autre.getNbElements(); i++)
+            if (this.trouver(autre.getElementAt(i)) == -1)
+                return false;
+        return true;
     }
 
     private void resize() {

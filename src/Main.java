@@ -19,5 +19,16 @@ public class Main {
         data.ajouter(25, 4);
         data.ajouter(60, 8);
         System.out.println(data);
+
+        System.out.println("Test 4: Ajouter des valeurs provenant d'un autre vecteur");
+        Vecteur v2 = new Vecteur();
+        v2.ajouter(50);
+        v2.ajouter(60);
+        v2.ajouter(70);
+        data.ajouter(v2);
+
+        Vecteur v3 = new Vecteur();
+        data.ajouter(v3);
+        System.out.println(data);
     }
 }
