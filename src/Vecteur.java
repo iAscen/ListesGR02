@@ -16,6 +16,18 @@ public class Vecteur {
         return str + "]";
     }
 
+    public int getNbElements() {
+        return nbElements;
+    }
+
+    public boolean estVide() {
+        return nbElements == 0;
+    }
+
+    public int getElementAt(int index) {
+        return tableau[index];
+    }
+
     public void ajouter(int valeur) {
         if (nbElements == tableau.length)
             resize();
@@ -31,21 +43,16 @@ public class Vecteur {
         nbElements++;
     }
 
+    private void resize() {
+        int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
+        for (int i = 0; i < nbElements; i++)
+            nouveau[i] = tableau[i];
+        tableau = nouveau;
+    }
+
     public void ajouter(Vecteur autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             this.ajouter(autre.getElementAt(i));
-    }
-
-    public int getNbElements() {
-        return nbElements;
-    }
-
-    public boolean estVide() {
-        return nbElements == 0;
-    }
-
-    public int getElementAt(int index) {
-        return tableau[index];
     }
 
     public int trouver(int valeur) {
@@ -55,17 +62,10 @@ public class Vecteur {
         return -1;
     }
 
-    public boolean trouveTout(Vecteur autre) {
+    public boolean trouverTout(Vecteur autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             if (this.trouver(autre.getElementAt(i)) == -1)
                 return false;
         return true;
-    }
-
-    private void resize() {
-        int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
-        for (int i = 0; i < nbElements; i++)
-            nouveau[i] = tableau[i];
-        tableau = nouveau;
     }
 }
