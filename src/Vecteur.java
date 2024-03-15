@@ -68,4 +68,33 @@ public class Vecteur {
                 return false;
         return true;
     }
+
+    public boolean effacerAt(int index) {
+        if (index < 0 || index > nbElements)
+            return false;
+
+        for (int i = index; i < nbElements; i++)
+            tableau[i] = tableau[i + 1];
+        nbElements--;
+        return true;
+    }
+
+    public boolean effacerTout(Vecteur autre) {
+        boolean modifie = false;
+        for (int i = 0; i < autre.getNbElements(); i++) {
+            int valeurCherchee = autre.getElementAt(i);
+            int indexTrouve = this.trouver(valeurCherchee);
+            if (indexTrouve != -1) {
+                effacerAt(indexTrouve);
+                modifie = true;
+            }
+        }
+        return modifie;
+    }
+
+    public void effacerTout() {
+        //effacerTout(this);
+        tableau = new int[TAILLE_INITIALE];
+        nbElements = 0;
+    }
 }
