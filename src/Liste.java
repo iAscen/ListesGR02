@@ -1,18 +1,16 @@
-public class Vecteur {
-    private int[] tableau;
+public class Liste {
+    private Noeud premier;
     private int nbElements;
-    private static final int RATIO_AGRANDISSEMENT = 2;
-    private static final int TAILLE_INITIALE = 5;
 
-    public Vecteur() {
-        tableau = new int[TAILLE_INITIALE];
+    public Liste() {
+        premier = null;
         nbElements = 0;
     }
 
     public String toString() {
         String str = "[";
-        for (int i = 0; i < nbElements; i++)
-            str += tableau[i] + ", ";
+        for (Noeud courant = premier; courant != null; courant = courant.prochain)
+            str += courant.valeur + ", ";
         return str + "]";
     }
 
@@ -25,15 +23,32 @@ public class Vecteur {
     }
 
     public int getElementAt(int index) {
-        return tableau[index];
+        //return tableau[index];
+        int indexCourant = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (indexCourant == index)
+                return courant.valeur;
+            indexCourant++;
+        }
+        return -1;
     }
 
     public void ajouter(int valeur) {
-        if (nbElements == tableau.length)
-            resize();
-        tableau[nbElements++] = valeur;
-    }
+        //tableau[nbElements++] = valeur;
 
+        Noeud dernier = null;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain)
+            dernier = courant;
+
+        if (premier == null) {
+            premier = new Noeud(valeur);
+        }
+        else {
+            dernier.prochain = new Noeud(valeur);
+        }
+        nbElements++;
+    }
+/*
     public void ajouter(int valeur, int index) {
         if (nbElements == tableau.length)
             resize();
@@ -50,7 +65,7 @@ public class Vecteur {
         tableau = nouveau;
     }
 
-    public void ajouter(Vecteur autre) {
+    public void ajouter(Liste autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             this.ajouter(autre.getElementAt(i));
     }
@@ -62,7 +77,7 @@ public class Vecteur {
         return -1;
     }
 
-    public boolean trouverTout(Vecteur autre) {
+    public boolean trouverTout(Liste autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
             if (this.trouver(autre.getElementAt(i)) == -1)
                 return false;
@@ -79,7 +94,7 @@ public class Vecteur {
         return true;
     }
 
-    public boolean effacerTout(Vecteur autre) {
+    public boolean effacerTout(Liste autre) {
         boolean modifie = false;
         for (int i = 0; i < autre.getNbElements(); i++) {
             int valeurCherchee = autre.getElementAt(i);
@@ -97,4 +112,6 @@ public class Vecteur {
         tableau = new int[TAILLE_INITIALE];
         nbElements = 0;
     }
+
+ */
 }
