@@ -18,7 +18,7 @@ public class Main {
         data.ajouter(10);
         System.out.println(data);
         System.out.println(data.getNbElements());
-/*
+
         System.out.println("Test 3: Ajouter des valeurs à des index spécifiques");
         data.ajouter(-1, 0);
         data.ajouter( 5, 4);
@@ -56,10 +56,10 @@ public class Main {
         test8.ajouter(-1);
         test8.ajouter(4);
         test8.ajouter(70);
-        System.out.println(data.trouverTout(test8));
+        System.out.println(data.trouverTout(test8)); // true
 
         test8.ajouter(9);
-        System.out.println(data.trouverTout(test8));
+        System.out.println(data.trouverTout(test8)); // false
 
         System.out.println("Test 9: Effacer une valeur à une position spécifique");
         System.out.println(data);
@@ -82,6 +82,5 @@ public class Main {
         data.effacerTout();
         System.out.println(data);
         System.out.println(data.getNbElements());
-        */
     }
 }
